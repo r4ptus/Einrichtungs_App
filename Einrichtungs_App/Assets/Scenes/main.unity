@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2757936bf2a3f204aae7e1e4dbb75255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 505522870151622662, guid: 74f0053a53231d04c93711c7306d195f,
+  objectToSpawn: {fileID: 5931564632090876955, guid: 74f0053a53231d04c93711c7306d195f,
     type: 3}
 --- !u!4 &1496970820
 Transform:
@@ -591,6 +591,8 @@ GameObject:
   - component: {fileID: 1916992271}
   - component: {fileID: 1916992270}
   - component: {fileID: 1916992269}
+  - component: {fileID: 1916992273}
+  - component: {fileID: 1916992274}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -653,3 +655,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916992273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916992268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointCloudPrefab: {fileID: 746793159515864937, guid: 238a6225380d6e94aa5c62f2831264c6,
+    type: 3}
+--- !u!114 &1916992274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916992268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ReferencePointPrefab: {fileID: 0}
