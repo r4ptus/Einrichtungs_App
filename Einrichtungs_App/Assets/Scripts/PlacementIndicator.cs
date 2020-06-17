@@ -21,7 +21,7 @@ public class PlacementIndicator : MonoBehaviour
     void Update()
     {
         List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.Planes);
+        raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.PlaneWithinPolygon);
 
         if(hits.Count > 0)
         {

@@ -5,24 +5,24 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
-[RequireComponent(typeof(ARReferencePointManager))]
+[RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARPlaneManager))]
 public class PointReferencemanager : MonoBehaviour
 {
     private ARRaycastManager aRRaycastManager;
-    private ARReferencePointManager referencePointManager;
+    private ARAnchorManager referencePointManager;
     private ARPlaneManager planeManager;
 
-    private List<ARReferencePoint> referencePoints = new List<ARReferencePoint>();
+    private List<ARAnchor> referencePoints = new List<ARAnchor>();
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
-        referencePointManager = GetComponent<ARReferencePointManager>();
+        referencePointManager = GetComponent<ARAnchorManager>();
         planeManager = GetComponent<ARPlaneManager>();
-        FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = referencePointManager.referencePointPrefab.gameObject.transform.localScale;
+        FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = referencePointManager.anchorPrefab.gameObject.transform.localScale;
     }
     void Update()
     {
@@ -37,7 +37,7 @@ public class PointReferencemanager : MonoBehaviour
         if (aRRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.PlaneWithinPolygon))
         {
             Pose hitPose = hits[0].pose;
-            ARReferencePoint referencePoint = referencePointManager.AddReferencePoint(hitPose);
+            ARAnchor referencePoint = referencePointManager.AddAnchor(hitPose);
 
             if (referencePoint == null)
                 Debug.Log("There was an error creating the referencPoint");
