@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -17,14 +18,20 @@ public class PointReferencemanager : MonoBehaviour
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    void Awake()
+    void Start()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
         referencePointManager = GetComponent<ARAnchorManager>();
         planeManager = GetComponent<ARPlaneManager>();
         FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = referencePointManager.anchorPrefab.gameObject.transform.localScale;
+
+        PlacementBehaviour.buttonClickDelegate += OnButtonCLick;
     }
-    void Update()
+    private void OnDisable()
+    {
+        PlacementBehaviour.buttonClickDelegate -= OnButtonCLick;
+    }
+    public void OnButtonCLick()
     {
         if (Input.touchCount == 0)
             return;
