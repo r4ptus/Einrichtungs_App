@@ -35,6 +35,7 @@ public class Eintrag : MonoBehaviour
         main.ShowHideMenuButton();
         main.ShowHidePlaceButton();
         FindObjectOfType<ARAnchorManager>().anchorPrefab = GameObject;
+        FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = GameObject.transform.localScale;
     }
 
     // Update is called once per frame

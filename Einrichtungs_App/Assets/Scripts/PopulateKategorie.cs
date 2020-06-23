@@ -15,7 +15,7 @@ public class PopulateKategorie : MonoBehaviour
 
     void Start()
     {
-        //Populate();
+        Populate();
     }
     public void DestroyPrefabs()
     {
@@ -31,9 +31,11 @@ public class PopulateKategorie : MonoBehaviour
         UIManager manager = GameObject.Find("Canvas").GetComponent<UIManager>();
         Kategorie = manager.KategorieClicked;
 
-        Debug.Log("Populate KAtegorie" + Kategorie.Name);
+        Debug.Log("Populate Kategorie" + Kategorie.Name);
 
         GameObject newObj;
+
+        Debug.Log(Kategorie.gameObjects.Length);
 
         for (int i = 0; i < Kategorie.gameObjects.Length; i++)
         {
@@ -45,7 +47,7 @@ public class PopulateKategorie : MonoBehaviour
             newObj.GetComponent<Eintrag>().GameObject = Kategorie.gameObjects[i] as GameObject;
             InstantiatedObjects.Add(newObj);
             GameObject go = Kategorie.gameObjects[i] as GameObject;
-            Sprite mySprite = Sprite.Create(AssetPreview.GetAssetPreview(go), new Rect(.0f, .0f, AssetPreview.GetMiniThumbnail(go).width, AssetPreview.GetMiniThumbnail(go).height), new Vector2(.5f, .5f), 100.0f);
+            Sprite mySprite = Sprite.Create(RuntimePreviewGenerator.GenerateModelPreview(go.transform,128,128), new Rect(.0f, .0f, 128, 128), new Vector2(.5f, .5f), 100.0f);
             newObj.GetComponent<Eintrag>().Image.sprite = mySprite;
 
         }

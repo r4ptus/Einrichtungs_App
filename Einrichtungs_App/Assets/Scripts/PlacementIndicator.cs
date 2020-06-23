@@ -20,6 +20,7 @@ public class PlacementIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         List<ARRaycastHit> hits = new List<ARRaycastHit>();
         raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.PlaneWithinPolygon);
 
