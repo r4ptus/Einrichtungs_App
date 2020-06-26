@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject KategorieInfo;
     public GameObject MenuButton;
     public GameObject PlaceButton;
+    public ARAnchorManager ARAnchorManager;
 
     public Kategorie KategorieClicked;
 
@@ -35,8 +37,14 @@ public class UIManager : MonoBehaviour
     {
         MenuButton.SetActive(!KategorieInfo.activeSelf);
     }
-    public void ShowHidePlaceButton()
+    private void Update()
     {
-        PlaceButton.SetActive(!KategorieInfo.activeSelf);
+        if (ARAnchorManager.anchorPrefab != null 
+            && !PlaceButton.activeSelf 
+            && !KategorieInfo.activeSelf 
+            && !KategoriesUI.activeSelf)
+        {
+            PlaceButton.SetActive(true);
+        }
     }
 }

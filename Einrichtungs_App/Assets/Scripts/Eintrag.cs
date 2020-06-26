@@ -33,7 +33,6 @@ public class Eintrag : MonoBehaviour
         UIManager main = GameObject.Find("Canvas").GetComponent<UIManager>();
         main.ShowHideKategorieInfo();
         main.ShowHideMenuButton();
-        main.ShowHidePlaceButton();
         FindObjectOfType<ARAnchorManager>().anchorPrefab = GameObject;
         FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = GameObject.transform.localScale;
     }
