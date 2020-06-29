@@ -34,7 +34,8 @@ public class Eintrag : MonoBehaviour
         main.ShowHideKategorieInfo();
         main.ShowHideMenuButton();
         FindObjectOfType<ARAnchorManager>().anchorPrefab = GameObject;
-        FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = GameObject.transform.localScale;
+        FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = new Vector3(GameObject.transform.localScale.x, 0, GameObject.transform.localScale.y);
+    
     }
 
     // Update is called once per frame

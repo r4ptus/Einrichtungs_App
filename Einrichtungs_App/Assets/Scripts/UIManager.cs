@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public ARAnchorManager ARAnchorManager;
 
     public Kategorie KategorieClicked;
-
+    public PlacementIndicator PlacementIndicator;
 
     public void ShowHideKategorieUI()
     {
@@ -39,12 +39,21 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (ARAnchorManager.anchorPrefab != null 
-            && !PlaceButton.activeSelf 
-            && !KategorieInfo.activeSelf 
-            && !KategoriesUI.activeSelf)
+        if (!PlacementIndicator.intersected)
         {
-            PlaceButton.SetActive(true);
+            if (ARAnchorManager.anchorPrefab != null
+           && !PlaceButton.activeSelf
+           && !KategorieInfo.activeSelf
+           && !KategoriesUI.activeSelf)
+            {
+                PlaceButton.SetActive(true);
+            }
         }
+        else
+        {
+            PlaceButton.SetActive(false);
+        }
+        
+       
     }
 }

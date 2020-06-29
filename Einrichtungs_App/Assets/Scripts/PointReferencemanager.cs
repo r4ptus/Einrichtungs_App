@@ -46,9 +46,12 @@ public class PointReferencemanager : MonoBehaviour
 
         if (aRRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.PlaneWithinPolygon))
         {
+            // testen ob Object vorhanden, schauen ob Raycast auf Object zeigt
             Pose hitPose = hits[0].pose;
             ARAnchor referencePoint = referencePointManager.AddAnchor(hitPose);
+            referencePoint.name = "Cube";
             Debug.Log("AR");
+
             if (referencePoint == null)
                 Debug.Log("There was an error creating the referencPoint");
             else
