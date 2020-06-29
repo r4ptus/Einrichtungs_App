@@ -19,6 +19,7 @@ public class PopulateList : MonoBehaviour
     Object[] rects;
 
     Dictionary<string, Object[]> Kategories = new Dictionary<string, Object[]>();
+    List<UnityWebRequest> UnityWebRequests = new List<UnityWebRequest>();
 
     void Start()
     {
@@ -26,6 +27,13 @@ public class PopulateList : MonoBehaviour
     }
     void Update()
     {
+        foreach(UnityWebRequest request in UnityWebRequests)
+        {
+            if (!request.isDone)
+                break;
+
+            asset_bundles_loaded = true;
+        }
         // Wait for all asset bundles to be loaded
         if (asset_bundles_loaded && !calledOnce)
         {
@@ -52,11 +60,6 @@ public class PopulateList : MonoBehaviour
         StartCoroutine(load_sub_asset_bundle("cube"));
         StartCoroutine(load_sub_asset_bundle("rect"));
 
-        // The delay here has been added to make sure it will load.
-        // Im looking into a solution to make it as quick as possible
-        // but this is another problem and is not required here.
-        yield return new WaitForSeconds(2F);
-        asset_bundles_loaded = true;
         yield return true;
     }
 
@@ -78,7 +81,7 @@ public class PopulateList : MonoBehaviour
 
         // Ask for the bundle
         UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri, 0);
-
+        UnityWebRequests.Add(request);
         yield return request.SendWebRequest();
         switch (bundle_name)
         {
@@ -91,8 +94,6 @@ public class PopulateList : MonoBehaviour
             default:
                 break;
         }
-        // Delay for now is just to make sure it loads properly before its use.
-        //yield return new WaitForSeconds(1F);
     }
     public void Populate()
     {
