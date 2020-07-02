@@ -54,7 +54,6 @@ public class UIManager : MonoBehaviour
         {
             PlaceButton.SetActive(false);
         }
-
         //Button Menu
         /**
         if(object is selected)
