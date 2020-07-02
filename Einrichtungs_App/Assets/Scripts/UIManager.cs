@@ -9,10 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject KategorieInfo;
     public GameObject MenuButton;
     public GameObject PlaceButton;
-    public GameObject RotateLeftButton;
-    public GameObject RotateRightButton;
-    public GameObject MoveButton;
-    public GameObject DeleteButton;
+    public GameObject ButtonMenu;
     public ARAnchorManager ARAnchorManager;
 
     public Kategorie KategorieClicked;
@@ -56,6 +53,18 @@ public class UIManager : MonoBehaviour
         else
         {
             PlaceButton.SetActive(false);
-        }  
+        }
+
+        //Button Menu
+        /**
+        if(object is selected)
+        {
+            ButtonMenu.setActive(true);
+        }
+        else
+        {
+            ButtonMenu.setActive(false);
+        }
+        **/
     }
 }
