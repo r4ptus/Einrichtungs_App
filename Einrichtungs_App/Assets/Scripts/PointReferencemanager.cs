@@ -14,23 +14,24 @@ public class PointReferencemanager : MonoBehaviour
     private ARAnchorManager referencePointManager;
     private ARPlaneManager planeManager;
 
-    private List<ARAnchor> referencePoints = new List<ARAnchor>();
+    public List<ARAnchor> referencePoints = new List<ARAnchor>();
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
+
+   
     void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
         referencePointManager = GetComponent<ARAnchorManager>();
         planeManager = GetComponent<ARPlaneManager>();
-        if(referencePointManager.anchorPrefab.gameObject != null)
+        if (referencePointManager.anchorPrefab.gameObject != null)
             FindObjectOfType<PlacementIndicator>().gameObject.transform.GetChild(0).localScale = referencePointManager.anchorPrefab.gameObject.transform.localScale;
-
-
     }
     private void OnEnable()
     {
         PlacementBehaviour.buttonClickDelegate += OnButtonCLick;
+       
         Debug.Log("OnEnable");
         if(PlacementBehaviour.buttonClickDelegate != null)
             Debug.Log(PlacementBehaviour.buttonClickDelegate.ToString());
@@ -38,6 +39,7 @@ public class PointReferencemanager : MonoBehaviour
     private void OnDisable()
     {
         PlacementBehaviour.buttonClickDelegate += OnButtonCLick;
+        
         Debug.Log("OnDisable");
 
     }
@@ -58,4 +60,6 @@ public class PointReferencemanager : MonoBehaviour
                 referencePoints.Add(referencePoint);
         }
     }
+
+   
 }

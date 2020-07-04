@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (!PlacementIndicator.intersected)
+        if (!PlacementIndicator.intersected && !PlacementIndicator.selected)
         {
             if (ARAnchorManager.anchorPrefab != null
            && !PlaceButton.activeSelf
@@ -48,22 +48,28 @@ public class UIManager : MonoBehaviour
            && !KategoriesUI.activeSelf)
             {
                 PlaceButton.SetActive(true);
+              
             }
         }
         else
         {
             PlaceButton.SetActive(false);
+            
         }
         //Button Menu
-        /**
-        if(object is selected)
+        
+        if(PlacementIndicator.selected)
         {
-            ButtonMenu.setActive(true);
+            Debug.Log("Selected");
+            PlaceButton.SetActive(false);
+            ButtonMenu.SetActive(true);
         }
         else
         {
-            ButtonMenu.setActive(false);
+            Debug.Log("Not Selected");
+            ButtonMenu.SetActive(false);
+            PlaceButton.SetActive(true);
         }
-        **/
+        
     }
 }
