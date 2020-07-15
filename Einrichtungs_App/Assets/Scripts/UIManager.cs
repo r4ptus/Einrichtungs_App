@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
     public GameObject MenuButton;
     public GameObject PlaceButton;
     public GameObject ButtonMenu;
+    public GameObject DeselectButton;
+    public Text SelectedItemText;
     public ARAnchorManager ARAnchorManager;
 
     public Kategorie KategorieClicked;
@@ -36,7 +39,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowHideMenuButton()
     {
-        MenuButton.SetActive(!KategorieInfo.activeSelf);
+        MenuButton.SetActive(!KategorieInfo.activeSelf);           
     }
     private void Update()
     {
@@ -58,18 +61,22 @@ public class UIManager : MonoBehaviour
         }
         //Button Menu
         
-        if(PlacementIndicator.selected)
+        if(PlacementIndicator.selected && !ButtonMenu.activeSelf)
         {
             Debug.Log("Selected");
-            PlaceButton.SetActive(false);
             ButtonMenu.SetActive(true);
+            SelectedItemText.text = PlacementIndicator.lastSelectedObject.name;
         }
-        else
+        else if(!PlacementIndicator.selected && ButtonMenu.activeSelf)
         {
             Debug.Log("Not Selected");
             ButtonMenu.SetActive(false);
-            PlaceButton.SetActive(true);
         }
         
+    }
+    public void OnClickDeselect()
+    {
+        PlacementIndicator.selected = false;
+        PlacementIndicator.lastSelectedObject = null;     
     }
 }

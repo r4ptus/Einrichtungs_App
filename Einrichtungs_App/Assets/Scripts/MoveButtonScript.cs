@@ -56,15 +56,8 @@ public class MoveButtonScript : MonoBehaviour
                     Destroy(PlacementIndicator.lastSelectedObject);
                     Debug.Log(PlacementIndicator.lastSelectedObject);
                 }
-             
-
-
             }
         }
-       
-            
-                
-        
     }
 
     public void RotateLeft()
