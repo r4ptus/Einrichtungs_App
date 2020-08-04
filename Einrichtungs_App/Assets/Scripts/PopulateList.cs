@@ -75,8 +75,8 @@ public class PopulateList : MonoBehaviour
              uri = path_to_use;
 #else
         // This is the same path but for your computer to recognize
-        path_to_use = Application.dataPath;
-        uri = path_to_use + "/" + bundle_name;
+        path_to_use = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
+        uri = System.IO.Path.Combine(path_to_use, bundle_name);
 #endif
 
         // Ask for the bundle
