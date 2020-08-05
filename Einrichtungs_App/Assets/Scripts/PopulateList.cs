@@ -20,6 +20,7 @@ public class PopulateList : MonoBehaviour
 
     Dictionary<string, Object[]> Kategories = new Dictionary<string, Object[]>();
     List<UnityWebRequest> UnityWebRequests = new List<UnityWebRequest>();
+    List<AssetBundleCreateRequest> Request = new List<AssetBundleCreateRequest>();
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PopulateList : MonoBehaviour
     }
     void Update()
     {
+        #if UNITY_ANDROID && !UNITY_EDITOR
         foreach(UnityWebRequest request in UnityWebRequests)
         {
             if (!request.isDone)
@@ -34,8 +36,18 @@ public class PopulateList : MonoBehaviour
 
             asset_bundles_loaded = true;
         }
+        #else
+        foreach(AssetBundleCreateRequest request in Request)
+        {
+            if (!request.isDone)
+                break;
+
+            asset_bundles_loaded = true;
+        }
+        #endif
+
         // Wait for all asset bundles to be loaded
-        if (asset_bundles_loaded && !calledOnce)
+        if (!calledOnce && asset_bundles_loaded)
         {
             // Once loaded use the assets in asset bundles
             // To get the data in  a bundle, you must do your_bundle.LoadAsset<type_of_your_asset>("name_of_the_asset_case_sensitive");
@@ -69,23 +81,19 @@ public class PopulateList : MonoBehaviour
         string uri;
         string path_to_use;
 
-#if UNITY_ANDROID && !UNITY_EDITOR
+        #if UNITY_ANDROID && !UNITY_EDITOR
              // This is the path to require an asset bundle in Assets/StreamingAssets on Android
              path_to_use = Path.Combine("jar:file://" + Application.dataPath + "!assets/", bundle_name);
              uri = path_to_use;
-#else
-        // This is the same path but for your computer to recognize
-        path_to_use = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
-        uri = System.IO.Path.Combine(path_to_use, bundle_name);
-#endif
 
-        // Ask for the bundle
-        UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri, 0);
-        UnityWebRequests.Add(request);
-        yield return request.SendWebRequest();
-        switch (bundle_name)
-        {
+            UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(uri, 0);
+            UnityWebRequests.Add(request);
+            yield return request.SendWebRequest();
+
+            switch (bundle_name)
+            {
             case "cube":
+                if()
                 cubeBundle = DownloadHandlerAssetBundle.GetContent(request);
                 break;
             case "rect":
@@ -94,6 +102,29 @@ public class PopulateList : MonoBehaviour
             default:
                 break;
         }
+        #else
+        // This is the same path but for your computer to recognize
+        path_to_use = Application.streamingAssetsPath;
+        uri = System.IO.Path.Combine(path_to_use, bundle_name);
+
+        var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(uri);
+        Request.Add(assetBundleCreateRequest);
+        yield return assetBundleCreateRequest;
+
+        switch (bundle_name)
+        {
+            case "cube":
+                cubeBundle = assetBundleCreateRequest.assetBundle;
+                break;
+            case "rect":
+                rectBundle = assetBundleCreateRequest.assetBundle;
+                break;
+            default:
+                break;
+        }
+
+        #endif
+
     }
     public void Populate()
     {
