@@ -93,7 +93,6 @@ public class PopulateList : MonoBehaviour
             switch (bundle_name)
             {
             case "cube":
-                if()
                 cubeBundle = DownloadHandlerAssetBundle.GetContent(request);
                 break;
             case "rect":

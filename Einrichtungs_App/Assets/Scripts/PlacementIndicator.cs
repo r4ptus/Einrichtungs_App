@@ -61,7 +61,7 @@ public class PlacementIndicator : MonoBehaviour
                     if (hitObject.transform.gameObject.name == "Cube")
                     {
                        lastSelectedObject = hitObject.transform.gameObject;
-                        selected = true;
+                       selected = true;
                     }
                       
                 }
