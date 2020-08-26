@@ -15,7 +15,7 @@ public class PopulateKategorie : MonoBehaviour
 
     void Start()
     {
-        Populate();
+        //Populate();
     }
     public void DestroyPrefabs()
     {
