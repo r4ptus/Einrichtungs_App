@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
+//stellt ein Möblestück da
 public class Eintrag : MonoBehaviour
 {
     public Image Image;
@@ -20,6 +21,7 @@ public class Eintrag : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //initialisiert alle texte, bilder und listener
         tmpName.SetText(Name);
         tmpWidth.SetText(Width.ToString());
         tmpHeight.SetText(Heigth.ToString());

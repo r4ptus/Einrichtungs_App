@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+//läd die jeweiligen daten in die einzelnen kategorien
 public class PopulateKategorie : MonoBehaviour
 {
     public GameObject prefab;

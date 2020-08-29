@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
+//logic für die UI
 public class UIManager : MonoBehaviour
 {
     public GameObject KategoriesUI;

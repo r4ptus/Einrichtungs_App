@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+//logic für das platzieren von objekten
 [RequireComponent(typeof(ARRaycastManager))]
 [RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARPlaneManager))]

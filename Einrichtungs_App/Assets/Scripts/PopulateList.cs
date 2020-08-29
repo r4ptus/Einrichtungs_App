@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+//läd die objekte für das menü also alle kategorien
 public class PopulateList : MonoBehaviour
 {
     public GameObject prefab;

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+//indikator wo man ein objekt platzieren kann
 public class PlacementIndicator : MonoBehaviour
 {
     private static ARRaycastManager raycastManager;

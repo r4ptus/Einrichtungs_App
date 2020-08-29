@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//löst das delegate aus
 public class PlacementBehaviour : MonoBehaviour
 {
     public delegate void OnButtonClickDelegate();

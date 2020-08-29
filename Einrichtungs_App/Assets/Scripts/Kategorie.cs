@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+//base class für die jeweilige kategorie
 public class Kategorie : MonoBehaviour
 {
     public string Name = "Kategorie";

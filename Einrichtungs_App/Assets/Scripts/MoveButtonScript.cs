@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-
+//dises script regelt das wenn man ein objekt ausgewählt hat und man den move button gedrückt hält sich das objekt bewegt
 public class MoveButtonScript : MonoBehaviour
 {
     private PointReferencemanager PointReferencemanager;
@@ -24,6 +24,7 @@ public class MoveButtonScript : MonoBehaviour
     }
 
     // Update is called once per frame
+    // hier wird rotiert und gemnoved
     void Update()
     {
         if (left)
